@@ -1,0 +1,126 @@
+
+body{
+    background-color: green;
+}
+
+.keypad {
+    background-color: red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.keypad input {
+    width: 4em;
+    height: 4em;
+    margin: .2em;
+}
+
+.slab {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+    border: none;
+}
+
+.name {
+    position: relative;
+    top: -9em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /*background-color: black;*/
+    background: rgba(204, 204, 204, 0.0);
+    color: white;
+  
+}
+
+.name p {
+    line-height: 0;
+    font-size: 5em;
+    /*white-space: nowrap;*/
+}
+
+.slab img {
+    /*display: block;*/
+    width: 90%;
+}
+
+@media only screen and (max-device-width:640px){
+    
+.keypad {
+    display: none;
+}
+
+/*.keypad input {
+    width: 10em;
+    height: 10em;
+    margin: .2em;
+}*/
+}/*end 480 device*/
+
+
+/*  height: 100%;
+  display: flex;
+  align-items: center; /* horizontal 
+  justify-content: center; /* vertical */
+
+/*max-height: 100%;  
+    max-width: 100%; 
+    width: auto;
+    height: auto;
+    position: absolute;  
+    top: 0;  
+    bottom: 0;  
+    left: 0;  
+    right: 0;  
+    margin: auto;
+
+/*body         {background-color: black;
+              font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+              color: #2EFE64;
+              font-weight:bold}
+
+p            {font-size: 20px}
+p.big        {font-size: 20px}
+p.copyright  {font-size: smaller;
+              padding-top: 40px}
+
+div.main        {margin-left: 200px;
+                 margin-top: 30px}
+div.nav_bar     {position: absolute;
+                 left: 10px;
+                 top: 10px}
+div.nav_bar a    {font-size: 30px}
+div.clicker     {padding: 10px}
+div.wild        {display: inline-block}
+
+a:link                         {color: #CEECF5}
+a:visited                      {color: #81DAF5}
+a:focus, a:hover, a:active     {color: #cf0021}
+
+h1                          {font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+                             color: #81DAF5;
+                             font-weight:bold;
+                             font-size: 40px}
+
+h2                          {font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+                             color: #5882FA;
+                             font-weight:bold;
+                             font-size: 25px}
+
+img                        {border: none}
+img.clicker                {border: none;
+                            float: left;
+                            padding-right: 15px}
+
+p.note                     {font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+                             color: #2EFE64;
+                             font-weight:bold;
+                             font-size: 25px}
+
+@media only screen and (max-device-width:480px){
+div.nav_bar a    {font-size: 35px}
+p.big            {font-size: 35px}
+}*/

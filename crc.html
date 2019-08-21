@@ -1,0 +1,153 @@
+<html>
+<head>
+<TITLE>crc interference and you
+</TITLE>
+<link rel="stylesheet" type="text/css" href="tips.css" />
+
+<!--google analytics-->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-102515378-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+</head>
+<body>
+
+<div class="main">
+
+<h1><a href="index.html"><img class="wesnoth"src="mainimages/skirmisher.png" alt="" /></a>CRC Interference and YOU.  A comprehensive guide:</h1>
+
+<p>
+Are you a dumbass?  (Hint: If I work with you then the answer is yes.)  Then this guide is for you.<br/><br/>
+(Actually this might only be relevant to you if your tools are setup with the <a href="g41.html">G41/42 on Tool Center</a>)<br/><br/>
+Do you keep getting the crc interference error?  Do you have no idea what it means?  Well, here we go.  Draw a circle with a radius of 2&frac12;".
+You should have gotten something like this:<br/>
+<img class="drain" src="mainimages/crc3.png" alt="pic1" /><br/><br/>
+Amazing.  Now draw a circle with a radius of -2&frac12;".  See my point?  Now don't give me any metaphysical b.s. about the 4th dimension or string theory
+or anything you might have seen on <a href="https://www.youtube.com/channel/UC7_gcs09iThXybpVgjHZ_7g">PBS Space Time.</a>  If you understood any of that shit you
+wouldn't be working at a granite factory.  There ain't no such thing as a circle with a negative radius and there ain't never was.  I don't understand them, you
+don't understand them, and guess what, the machines don't understand them, either.  You following me?
+<br/><br/>
+Alright, now everyone likes to pretend setting up tools is complicated.  It's not.  You have the length, the length wear, the sum of the length
+and length wear, the radius, the radius wear, and the sum of the radius and radius wear at the cnc:<br/>
+<img class="drain" src="mainimages/crc4.png" alt="pic1" /><br/><br/>
+And then on AlphaCAM you have the final depth:<br/>
+<img class="drain" src="mainimages/crc1.png" alt="pic1" /><br/><br/>
+And also the tool diameter and the stock to be left:<br/>
+<img class="drain" src="mainimages/crc2.png" alt="pic1" /><br/><br/>
+Maybe it looks complicated but it's not.  They all add up to two settings.  How high the tool runs and how close to the piece it runs.  That's it.
+<br/><br/>
+So anyway today I reset the 45 wheel for the bevel profile, trashed any bevel programs that were made before I reset it, and redid the trashed
+programs with the new setting.  All because the guy who sets up tools thought it would be a great idea to put a positive 0.45" radius for the bevel wheel into the cnc.
+(Right there on the 2nd screenshot where I have 0.0 hightlighted in
+blue.  He set that to 0.45)
+Why does entering
+0.45" for the radius at the cnc make you a moron?  Well, read on.<br/><br/>
+Here's the program that caused the crc error:<br/>
+<img class="drain" src="mainimages/crc5.png" alt="pic1" /><br/><br/>
+So it's running the 3002 tool in that 2" inner radius.  Same guy made this program and setup the tool with a radius of 0.45" at the cnc.  The "production manager."  lol.  So of course the operator
+came in and told me he was getting the "crc interference" error.  So I could have done a "quick" (not really) workaround like they do twice a week around here or I could
+just eliminate the crc interference error on that tool forever.  But if you're going to eliminate the crc interference error forever you have to know why you're getting it in the first place.
+<br/><br/>
+So let's look at what's going on.  The 3002 tool had a diameter of 3.1784 in AlphaCAM and a stock to be left of 0.06.  (See the screenshot above the last one.)  That means if you divide 3.1784 by 2 and add 0.06
+to the result then that's how far away from the piece AlphaCAM will tell the machine to run the center of the tool.  Don't believe me?  Well, let's see.
+3.1784/2+0.06=1.6492.<br/>
+<img class="drain" src="mainimages/crc6.png" alt="pic1" /><br/><br/>
+Looks like I was right.  Get used to it.  Okay, now look at that purple tool path above.  See how the tool path is just an offset geometry of the piece?
+(<a href="scale.html">Read my article on offsetting and scaling.</a>)  I mean if I turn off the tool path and instead offset two geometries with 1.649:<br/>
+<img class="drain" src="mainimages/crc7.png" alt="pic1" /><br/><br/>
+Then I get the exact same shape as that purple tool path:<br/>
+<img class="drain" src="mainimages/crc8.png" alt="pic1" /><br/><br/>
+See?  If I turned the purple tool path back on it would follow that exact path except it would attach a lead-in on the left side onto that radius.  Okay, now here's
+the important part.  What is that radius, anyway?  It's 2-1.6492=0.3508.  See?<br/>
+<img class="drain" src="mainimages/crc9.png" alt="pic1" /><br/><br/>
+The radius on the purple tool path is exactly the same.  All AlphaCAM does is generate G-code to send the center of the spindle along that line and along that 0.3508"
+radius.<br/><br/>
+Okay, now get ready.  If your machines are like ours then the radius at the machine augments whatever AlphaCAM says.  Suppose we had a -0.25" radius at the machine.
+Okay, then with that AlphaCAM program instead of running that line at 1.6492 away from the line it would run 1.6492-.25=1.3992 away from the line.  Get it?  It
+would run 1/4" closer to the piece.  And then instead of following that 0.3508" radius it would follow a 0.3508-0.25=0.1008" radius.  Right?  WRONG, YOU DUMBASS.
+Look:<br/>
+<img class="drain" src="mainimages/crc10.png" alt="pic1" /><br/><br/>
+See, that purple line is offset 1/4" towards the piece.  So you can see the line is indeed 1.3992 away from the top now.  But look at the radius!  It got bigger!  See!?
+It went from 0.3508 to 0.601.  If you subtract from the radius of the tool at the machine you add to the radius of the tool path.  0.3508+0.25=0.6008.  Get it?  That's
+why you can put negative values for the radius into the cnc.  Can you see where I'm going with this?
+<br/><br/>
+Okay, now what did our guy put for the radius of the tool?  0.45.  So instead of moving the tool path towards the piece it will move the tool
+path away from the piece.  So the line will run 1.6492+0.45=2.0992 away from the piece.  No problem.  Now if we add to the tool path radius when we subtract from the
+tool radius then we subtract from the tool path radius when we add to the tool radius.  So the tool path radius becomes 0.3508-0.45=-0.0992.  Get it?  Okay if you
+didn't just have an epiphany then start from the beginning and read again.
+<br/><br/>
+There is no such thing as a circle with a radius of -0.0992.  That's what crc interference means, at least every time I've seen it.  The machine's mind is blown.
+That's why every time the "production manager" puts on a new mill bit and it's a hair larger than normal he puts a positive 0.02" radius in at the cnc and then they
+get random crc interference errors that day.  So everyone else rewrites workaround programs while I've just been rolling my eyes, changing the radius to zero and having
+a laugh <mark class="red">for FOUR YEARS</mark>.  (You'd think they would have made the connection that the crc error only happens when they put on a new mill bit but you would be wrong.)
+<br/><br/>
+So anyway, if you don't care about understanding any of this and you just want the answer: <mark class="red">NEVER PUT POSITIVE VALUES FOR THE RADIUS AT THE CNC.</mark>  That's it!  Glad I
+could help.
+<br/><br/>
+Now if you want to understand further, chew on this.  How come having a positive radius at the cnc doesn't always cause crc interference?  Why does it seem to work most
+of the time?  Is it random?  No.  You can tell exactly when you're going to get crc interference.  Look at the above example.  There was a radius of 0.45 at the machine.
+You will get a crc interference error every time the tool path radius is calculated to be negative.  Whenever it's calculated to be positive you will not get an
+error.  So when will the tool path radius be calculated to be negative?  Whenever AlphaCAM sends out a value for the tool path radius less than 0.45.  Okay.  Now
+here's the fun part.  When does AlphaCAM send out a tool path with a radius less than 0.45?  Whenever your geometry has an inside radius between 1.6492 and 2.0992.
+That's why the program above threw the crc interference error.  It had an inner radius of 2".  That's smack in the middle of 1.6492 and 2.0992.  It was a forgone
+conclusion the program would not work as soon as he put 0.45 for the radius at the machine and wrote a program for a 2" inner radius as long as AlphaCAM has a diameter
+for the tool at 3.1784 and a stock to be left of 0.06.  Add all those numbers up and you get crc interference.
+<br/><br/>
+Now why don't you get crc interference if you have an inner radius less than 1.6492?  Well, look:<br/>
+<img class="drain" src="mainimages/crc11.png" alt="pic1" /><br/><br/>
+If I have an inner radius of 1.5" then if I offset in 1.6492 then I don't get a radius of -0.1492.  I get a radius of zero.  I get no radius.  AlphaCAM knows how
+to offset that stuff in.  The CNC does not.  Get it?  So when you send out this program there IS NO RADIUS to mess up.  Problem solved.  Every radius less than or equal
+to 1.6492 works just fine.  Every radius larger than 2.0992 works because 2.0992-1.6492=0.45.  Not really sure what would happen at that exact value but any value
+larger than 2.0992 works because any value greater than 0.45 gives you a positive tool path radius to work with.  Anything between 1.6492 and 2.0992 generates a
+negative tool path radius and blows the machine's mind.
+<br/><br/>
+I don't really know but I'm guessing the cnc doesn't "see" the geometry like we do.  I think it blindly follows instructions to start at one end of a line.  Move to
+the other end.  Then it knows to start at one end of a radius.  But it subtracts that 0.45 from the radius before it starts and then it has no idea what to do.  It
+doesn't have the sense to decide there is no radius and jump to the next line.  Or maybe if it was advanced enough to do that it would cause other problems that I
+haven't thought far enough ahead to realize.  Whatever.
+<br/><br/>
+Alright, so if you want to murder the crc interference error forever then change your radius to zero.  Then go into AlphaCAM and see that "stock to be left" edit box?
+(See the 4th screenshot above.)  I actually ended up messing with the height and everything but if you just want to straight up transfer the stupid positive radius from
+the cnc to AlphaCAM to get rid of it then change the 0.45 radius to zero at the cnc (where it's highlighted in blue on the 2nd screenshot) and add 0.45 to the stock to be left in AlphaCAM.  So 0.06 would become 0.51.
+Now all future programs will be crc interference free!  Of course the problem is that once you do that all programs already sitting in the shop waiting to be ran will
+be garbage. You have to reopen them, delete all the tool paths, and redo them.
+<br/><br/>
+Our sink programs threw a crc error every time the radius was near 1.5" and I knew how to fix it for four years but I never bothered because I never felt like
+flushing out all the programs with flat polish (all of them) in the shop.  All because someone set the tools up with a small positive radius years ago.
+Actually even the professional tool setup guys, the pros who work for the tool companies, they come in and setup tools that way too.  I wonder if
+I'm the only one in the world who even understands this.  Whatever.<br/><br/>
+
+Did you learn anything?  Look at the 2nd screenshot from the top and tell me what you see wrong.  Then use the screenshots below to tell me under exactly what circumstances
+my coworkers will have a problem they'll be too dumb to solve.<br/>
+<img class="drain" src="mainimages/problem1.png" alt="pic1" /><br/><br/>
+and:<br/>
+<img class="drain" src="mainimages/problem2.png" alt="pic1" /><br/><br/>
+Give me two ranges for both circumstances.  A &lt; B &lt; C and D &lt; E &lt; F.  I'm talking about
+the shape of the original CAD drawings here, not the tool paths they generate.
+First person to give me the correct answer gets an honorable mention
+on this page.<br/><br/>
+
+
+Email me: <a href="mailto:laconiclizard@lambentdesert.com">laconiclizard@lambentdesert.com</a>
+</p>
+
+<p class="big"><a href="index.html">HOME</a>
+</p>
+
+<p class="copyright">&copy; Copyright 2018 by laconiclizard
+</p>
+</div>
+
+
+
+
+
+</body>
+</html>

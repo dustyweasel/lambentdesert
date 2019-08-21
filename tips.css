@@ -1,0 +1,115 @@
+body         {background: #000000;
+              font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+              color: #2EFE64;
+              font-weight:bold}
+
+p            {font-size: 20px}
+mark.red     {color: #5882FA;
+              background: none}
+mark.huge     {color: #5882FA;
+                font-size: 50px;
+              background: none}
+mark.blue    {color: #DF0101;
+              background: none}
+p.big        {font-size: 20px}
+p.small        {font-size: 10px}
+/*p.copyright  {font-size: smaller;*/
+p.copyright  {font-size: 15px;
+              padding-top: 20px}
+img.wesnoth  {height: 40px;
+              width: 40px}
+img.display  {width: 400px}
+img.lightning {height: 20px;
+               width: 20px}
+img.profile  {height: 130px;
+              width: 225px}
+
+@media only screen and (max-device-width:480px){
+p            {font-size: 40px}
+mark.red     {color: #5882FA;
+              background: none}
+mark.blue    {color: #DF0101;
+              background: none}
+p.big        {font-size: 85px}
+p.small        {font-size: 10px}
+p.copyright  {font-size: smaller;
+              padding-top: 40px}
+img.wesnoth  {height: 180px;
+              width: 180px}
+img.display  {width: 600px}
+img.lightning {height: 85px;
+               width: 85px}
+img.profile  {height: 522px;
+              width: 900px}
+}
+
+div.main        {margin-left: 30px;
+                 margin-top: 30px}
+div.nav_bar     {position: absolute;
+                 left: 300px;
+                 top: 300px}
+div.nav_bar a    {font-size: 20px}
+div.clicker     {padding: 10px}
+div.wild        {display: inline-block}
+
+a:link                         {color: #CEECF5}
+a:visited                      {color: #81DAF5}
+a:focus, a:hover, a:active     {color: #cf0021}
+
+h1                          {font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+                             color: #5882FA;
+                             font-weight:bold;
+                             font-size: 20px}
+
+@media only screen and (max-device-width:480px){
+
+div.nav_bar     {display: none}
+
+h1                          {font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+                             color: #5882FA;
+                             font-weight:bold;
+                             font-size: 80px}
+}
+
+h2                          {font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+                             color: #5882FA;
+                             font-weight:bold;
+                             font-size: 30px}
+
+img                        {border: none}
+img.clicker                {border: none;
+                            float: left;
+                            padding-right: 15px}
+
+p.note                     {font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+                             color: #2EFE64;
+                             font-weight:bold;
+                             font-size: 25px}                  
+                             
+.textboxclass {
+height: 40px;
+width: 200px;
+font-size: 30px;
+}
+
+@media only screen and (max-device-width:480px){
+.textboxclass {
+height: 150px;
+width: 800px;
+font-size: 110px;
+}
+}
+
+.textboxclass2 {
+height: 40px;
+width: 200px;
+font-size: 30px;
+}
+
+@media only screen and (max-device-width:480px){
+.textboxclass2 {
+height: 100px;
+width: 800px;
+font-size: 110px;
+}
+}

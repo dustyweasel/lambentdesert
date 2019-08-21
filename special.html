@@ -1,0 +1,69 @@
+<html>
+<head>
+<TITLE>sinks
+</TITLE>
+<link rel="stylesheet" type="text/css" href="tips.css" />
+
+<!--google analytics-->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-102515378-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+</head>
+<body>
+
+<div class="main">
+
+<h1><a href="search.cgi"><img class="wesnoth" src="mainimages/skirmisher.png" alt="" /></a>TIPS:</h1>
+<h2>Special Help</h2>
+<p>
+Look people, if I was an expert computer programmer I wouldn't be working at a granite factory.  This website isn't google.  You can't enter spaces into the search bar and expect it to work. You can't
+enter more than one word.  Probably you shouldn't be entering anything that isn't a letter or a number.  In fact, here's the line that searches for dxf files
+in lambentdesert.com's stock sink drawings:<br/><br/>
+find ./sinks/dxfs -type f -iname \*$QUERY_STRING\* -name "*.dxf"<br/><br/>
+That's it!  All it does is see if what you typed is within the name of any of our files.  So just enter eluh. Or just enter 3118. Or just enter 035.  Just simple fragments of names.
+Imagine if the sink is named 502.254.98 on lambentdesert.com and you search for 50225498.  You won't find it!  What if you search for 502-254-98?  You won't find it!
+What if you enter 502 254? You won't find it!
+Just enter 502.  Or just enter 254.  That's it!  It works!  I don't need to go get a Phd. in Computer Science, the search bar works well enough.
+<br/><br/>
+The search results will be split into sections. 1) lambentdesert.com stock dxf sinks.  Then 2) 3) 4) etc will be results from all the donated folders.  Then the last section will be any AlphaCAM sinks that I drew.
+As you get to trust drawings from certain folders you'll know if you want to double check dimensions or not because you'll always know whose stash you're downloading from.
+</p>
+
+<!-- echo "If searching for Bredskar 502.254.98 then just search for 254 or 502.  If we named it 502.254.98 then a search"
+#  echo "for 502.254.98 or 254.98 will find it but if we named it 502-254-98 or 50225498 then you will not find it.  254 or 502 is guaranteed"
+#  echo "to find it no matter what it's named.  Hey you people are typing in multiple fragments with spaces between them, that doesn't work, I'm not google.  Just 254 and"
+#  echo " nothing else or just 502 and nothing else.  Get it?  Or instead of pl035 try 035.  See?"
+
+<!--<h2>FUN FACTS:</h2>
+<p>
+Pretty much all the sinks we use are stored as dxf's in the waterjet folders.  The waterjet uses programs saved as .ord files which are
+generated in FlowPath.  We open the .dxf's in FlowPath and turn them into .ord's.  When drawing for the CNC or sawjet we just import those
+dxf's from the waterjet folder.
+<br/><br/>
+.dwg files are AutoCAD files.  They're completely useless.
+<br/><br/>
+.ard and .asd files are AlphaCAM files.  AlphaCAM is for programming the cnc's and sawjet.  I actually have a lot of sinks saved in this
+format.
+<p/>-->
+
+<p class="big"><a href="search.cgi">SEARCH</a>
+</p>
+
+<p class="copyright">&copy; Copyright 2015 by laconiclizard
+</p>
+</div>
+
+
+
+
+
+</body>
+</html>

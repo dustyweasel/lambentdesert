@@ -1,0 +1,112 @@
+<html>
+<head>
+<TITLE>ten penny
+</TITLE>
+<link rel="stylesheet" type="text/css" href="tips.css" />
+
+<!--google analytics-->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-102515378-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+</head>
+<body>
+
+<div class="main">
+
+<h1><a href="index.html"><img class="wesnoth"src="mainimages/skirmisher.png" alt="" /></a>TEN PENNY PUZZLE:</h1>
+<p>
+Anybody use nesting on AlphaCAM?  Check out the Ten Penny puzzle.  It's a tight square that you're supposed to try to fit ten pennies in.
+Watch it here if you want: <a href="https://www.youtube.com/watch?v=I-SpRl-AxI0">Ten Penny</a>
+<br><br/>
+Apparently there's a whole branch of mathematics around packing shapes.  The 10 penny puzzle is just taken from this:
+<a href="https://www2.stetson.edu/~efriedma/cirinsqu/">some math guy</a>
+<br/><br/>
+When I first started using nesting without thinking about it I sort of assumed it had some kind of algorithm where
+it tried every possible arrangement (or at least a huge chunk of possiblilities) but I quickly learned that wasn't the case because sometimes it completely failed.  I've seen it think
+it needs ten slabs for an eight slab job.  I've seen it fail to fit a one slab job onto one slab.  Now I've seen it fail the ten penny puzzle.
+(Don't worry, I'm sure we'll still be unemployed and replaced by software in a few years, I'm just saying they haven't gotten around to it yet.)
+<br/><br/>
+I drew "pennies" with one unit radius and I think according to the link above the smallest possible square you can fit them
+into is 6.747... units tall and wide.  I tried manually fitting ten circles onto a 6.748 unit square and I can't even do it.  Look, I smash those five in
+as tight as possible:<br/>
+<img class="drain" src="mainimages/penny1.png" alt="pic1" />
+<br/><br/>
+Then I smash more circles in using the tangent circle, known radius thing:<br/>
+<img class="drain" src="mainimages/penny2.png" alt="pic1" />
+<br/><br/>
+And then at this point it's already taller vertically than it should be:
+<br/>
+<img class="drain" src="mainimages/penny3.png" alt="pic1" />
+<br/><br/>
+That doesn't make any sense.  I already rounded UP from 6.747... to 6.748.
+I should have had extra space.  Does anyone know what's going on?  To hell with it for now, I'm just gonna go with 6.76:
+<br/>
+<img class="drain" src="mainimages/penny4.png" alt="pic1" />
+<br/><br/>
+Now watch AlphaCAM's nesting try.  At first it looks like it blindly packs pieces to one side and then it's too dumb to figure out what to do when it runs out of room so it thinks
+it needs another "slab":<br/>
+<img class="drain" src="mainimages/penny5.png" alt="pic1" />
+<br/><br/>
+But if I make the square just a tad bigger it figures out that if it spaces those columns out vertically then it can squeeze them together horizontally.
+But then it never gives up on its rigid, uniform structure of alternating columns.  On my 6.8 square it packs them 6.8 vertically and 6.8 horizontally.
+<br/>
+<img class="drain" src="mainimages/penny6.png" alt="pic1" />
+<br/><br/>
+If I do a 6.9 square it packs them 6.9 vertially and 6.743 horizontally.  So it looks like all it does (if I select left for the "pack to" option) is pack them on
+the left spaced as far apart vertically as possible so it can smash everything left as far as possible:
+<br/>
+<img class="drain" src="mainimages/penny7.png" alt="pic1" />
+<br/><br/>
+So I guess the problem with the algorithm is when it packs those first three pennies on the left in.
+It has no way of knowing to slide the top penny to the right and to pull the middle one up.  It can't see the big picture:
+<br/>
+<img class="drain" src="mainimages/penny8.png" alt="pic1" />
+<br/><br/>
+I'm trying to imagine software
+that could do this.  What if instead of about three rows and columns it was a hundred?  Is there even a mathematical or algorithmic way to do this?  After looking at
+<a href="https://www2.stetson.edu/~efriedma/cirinsqu/">this page</a> I don't think there is.  (I'm not qualified to answer to this.)  It says at the top of
+that page "smallest known square" and that "most" of those examples have been proven, as if they have to do a unique mathematical proof for each square.
+<br/><br/>
+Plus what if the circles were all different sizes?  What if instead of cirles they
+were all countertop shaped?  Now rotation, a non-issue with circles, is thrown into the mix. Could they make software that uses heuristics to fit jobs instead of blindly smashing them in?  I don't think
+software that tries every possible arrangement is practical.  I remember even trying every permutation of characters in a large string would
+have taken billions of years for a PC to solve, the time was a factorial or something.
+<br/><br/>
+Maybe they could do like AlphaGO or
+do one of those neural networks or whatever where it randomly tries stuff and saves patterns that work and evolves.
+<br/><br/>
+This stuff is more complicated than I'll ever understand.  Look at these squares packed in circles examples: 
+<a href="https://www2.stetson.edu/~efriedma/squincir/">squares in circles</a>.  Look at #19!  That's insane.  If you have 19 squares with sides one inch long then THAT'S the smallest circle you can squeeze them in?  Radius 2.807.
+Who would have thought that that configuration would be the best?  I wonder how AlphaCAM's nesting will handle this one?  Let's see:<br/>
+<img class="drain" src="mainimages/penny9.png" alt="pic1" />
+<br/><br/>
+Check out this guy's packing page: <a href="https://www2.stetson.edu/~efriedma/packing.html">that math guy's packing page</a>.  Holy hell what kind of person
+figures all this stuff out.  I guess they don't work at granite factories.
+<br/><br/>
+But whatever, don't rely on nesting yet.  It's a handy tool but it's blind and stupid.
+Do I have any idea what I'm talking about?
+Email me: <a href="mailto:laconiclizard@lambentdesert.com">laconiclizard@lambentdesert.com</a><br/><br/>
+For more nesting experimentation go here: <a href="tetris.html">tetris</a>
+</p>
+
+<p class="big"><a href="index.html">HOME</a>
+</p>
+
+<p class="copyright">&copy; Copyright 2018 by laconiclizard
+</p>
+</div>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+body         {background: #000000;
+              font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+              color: #2EFE64;
+              font-weight:bold}
+
+p            {font-size: 20px}
+mark.red     {color: #81DAF5;
+              background: none}
+p.big        {font-size: 20px}
+p.small        {font-size: 10px}
+p.copyright  {font-size: smaller;
+              padding-top: 40px}
+
+@media only screen and (max-device-width:480px){
+p            {font-size: 40px}
+mark.red     {color: #81DAF5;
+              background: none}
+p.big        {font-size: 85px}
+p.small        {font-size: 10px}
+p.copyright  {font-size: smaller;
+              padding-top: 40px}
+}
+
+div.main        {margin-left: 30px;
+                 margin-top: 30px}
+div.nav_bar     {position: absolute;
+                 left: 10px;
+                 top: 10px}
+div.nav_bar a    {font-size: 50px}
+div.clicker     {padding: 10px}
+
+a:link                         {color: #CEECF5}
+a:visited                      {color: #81DAF5}
+a:focus, a:hover, a:active     {color: #cf0021}
+
+h1                          {font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+                             color: #81DAF5;
+                             font-weight:bold;
+                             font-size: 80px}
+
+h2                          {font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+                             color: #81DAF5;
+                             font-weight:bold;
+                             font-size: 30px}
+
+img                        {border: none}
+img.clicker                {border: none;
+                            float: left;
+                            padding-right: 15px}
+
+p.note                     {font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+                             color: #2EFE64;
+                             font-weight:bold;
+                             font-size: 25px}
+                             
+.textboxclass {
+height: 150px;
+width: 800px;
+}
