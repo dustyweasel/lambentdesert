@@ -1,0 +1,5 @@
+Old cgi bash script website I hacked together with no knowledge of bash scripting.  Replaced with www.silicatewastes.com after I learned Python.
+
+I don't really think this project is worth looking at.  I don't know bash scripting, I had to google every little thing I did and cobbled it together as fast as I could.  It is sort of interesting that I didn't even know about GET or POST requests.  I knew that I needed to pass a variable around like in C and I learned about the ?question mark but I never knew I was doing a GET request.  I never even knew I could pass more than one variable, I thought to pass more than one varialbe I had to learn javascript or something.  I really had no interest in web programming back then and just wanted to get it over with.
+
+Also there's a sed command in there somewhere, I think in match.cgi, so I guess I'm proud of that.  I have no memory of writing that line.  I must have googled a lot and hacked it out without knowing what I was doing.  I've seen entire books about the sed and awk commands.  Maybe someday I'll read one.
